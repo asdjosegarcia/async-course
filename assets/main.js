@@ -1,4 +1,4 @@
-const API = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCBVjMGOIkavEAhyqpxJ73Dw&part=snippet%2Cid&order=date&maxResults=50'
+const API = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCgg4V34MDerF5HkP8DOeUOg&part=snippet%2Cid&order=date&maxResults=50'
 
 const content= null || document.getElementById('content')//Eso se hace para que en caso de que fallé obtener el elemento por el id, no quede undefined, y que quede null.
 
@@ -21,6 +21,7 @@ async function fetchData(urlApi) {//declaramos un funcion para no tener que repe
         const videos = await fetchData(API)//llamamos a la funcion fetchData con el argumento API. video va a contener los datos que recivimos en fetch
         let view = `
         ${videos.items.map(video => `
+        <a href="https://www.youtube.com/watch?v=${video.id.videoId}">
         <div class="group relative">
         <div
           class="w-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:aspect-none">
@@ -33,6 +34,7 @@ async function fetchData(urlApi) {//declaramos un funcion para no tener que repe
           </h3>
         </div>
       </div>
+      </a>
         `).slice(0, 4).join('')}
         `;
         //videos.items.map(video => el metodo mapmap crea un nuevo arreglo con lo que devuelvamos en cada iteracion de nuestro arreglo
